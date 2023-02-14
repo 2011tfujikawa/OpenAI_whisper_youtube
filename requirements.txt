@@ -7,3 +7,4 @@ youtube-dl==2021.12.17
 ipython==7.28.0
 ffmpeg-python
 
+-e git+https://github.com/MiscellaneousStuff/whisper.git
