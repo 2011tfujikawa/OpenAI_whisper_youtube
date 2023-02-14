@@ -6,6 +6,8 @@ import os
 from IPython.display import HTML
 from base64 import b64encode
 
+print(whisper.__file__)
+
 outputfile=r'./audio_file.mp3'
 print(os.path.abspath(outputfile))
 
