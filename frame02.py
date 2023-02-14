@@ -30,7 +30,7 @@ if st.button('実行'):
 
     source = youtube_url
     print(source)
-"""
+
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         data_load_state = st.text('Downloading...'+str(source))
         info = ydl.extract_info(source, download=True)
@@ -45,7 +45,7 @@ if st.button('実行'):
     print(os.path.abspath(outputfile))
     print("----")       
     print(selected_item)
-
+"""
     audio_file= open(os.path.abspath(outputfile),'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/ogg')
