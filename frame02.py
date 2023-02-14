@@ -33,15 +33,15 @@ if st.button('実行'):
     source = youtube_url
     print(source)
 
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        data_load_state = st.text('Downloading...'+str(source))
-        info = ydl.extract_info(source, download=True)
-        filename = ydl.prepare_filename(info)
-        #print(info)
-        print(filename) 
-        outputfile=filename.replace('webm', 'mp3')
-        #outputfile=filename.split(".")[0]+str(".mp3")
-        data_load_state = st.text('Downloag DONE...'+str(source))
+#    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+#        data_load_state = st.text('Downloading...'+str(source))
+#        info = ydl.extract_info(source, download=True)
+#        filename = ydl.prepare_filename(info)
+#        #print(info)
+#        print(filename) 
+#        outputfile=filename.replace('webm', 'mp3')
+#        #outputfile=filename.split(".")[0]+str(".mp3")
+#        data_load_state = st.text('Downloag DONE...'+str(source))
 
     print("----")       
     print(os.path.abspath(outputfile))
