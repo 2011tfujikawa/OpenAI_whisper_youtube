@@ -6,13 +6,7 @@ import os
 from IPython.display import HTML
 from base64 import b64encode
 
-#import sys
-#sys.stdout = open("tmp.txt","w")
-
-# https://www.youtube.com/watch?v=9zuMSYjxUlk
-# youtube_url="https://www.youtube.com/watch?v=svopKK8YoRc"
 outputfile=r'./audio_file.mp3'
-#dir_path = os.path.dirname(os.path.realpath(__file__))+outputfile
 print(os.path.abspath(outputfile))
 
 textfile=r'./tmp.txt'
@@ -33,9 +27,6 @@ youtube_url = st.text_input("Youtube video or playlist URL")
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
 if st.button('実行'):
-#    text_file=open(os.path.abspath(textfile),'rb')
-#    text_bytes = text_file.read()
-#    st.write(text_bytes)
 
     source = youtube_url
     print(source)
@@ -55,7 +46,6 @@ if st.button('実行'):
     print("----")       
     print(selected_item)
 
-#    audio_file= open(r"H:\マイドライブ\python\streamlit\whisper_simple\a.mp3",'rb')
     audio_file= open(os.path.abspath(outputfile),'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/ogg')
@@ -67,14 +57,12 @@ if st.button('実行'):
     #model = whisper.load_model("medium")
     data_load_state.text('Loading data model...done!'+str(selected_item))
 
-#    result = model.transcribe(r"G:\マイドライブ\python\a.mp3", verbose=True)
     result = model.transcribe(os.path.abspath(outputfile), verbose=True)
     print(result["text"])
-
+# セグメントごとに表示
+    for seg in result["segments"]:
+        id, start, end, text = [seg[key] for key in ["id", "start", "end", "text"]]
+        print(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
+        st.write(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
+        
     st.write(result["text"])
-#else:
-#    st.write('むむむ')
-    
-
-
-#H:\マイドライブ\python\streamlit\whisper_simple
