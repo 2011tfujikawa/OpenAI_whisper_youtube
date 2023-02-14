@@ -45,7 +45,7 @@ if st.button('実行'):
     print(os.path.abspath(outputfile))
     print("----")       
     print(selected_item)
-"""
+
     audio_file= open(os.path.abspath(outputfile),'rb')
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/ogg')
@@ -66,4 +66,4 @@ if st.button('実行'):
         st.write(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
         
     st.write(result["text"])
-"""
+
