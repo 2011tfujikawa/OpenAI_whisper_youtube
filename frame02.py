@@ -30,7 +30,7 @@ if st.button('実行'):
 
     source = youtube_url
     print(source)
-
+"""
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         data_load_state = st.text('Downloading...'+str(source))
         info = ydl.extract_info(source, download=True)
@@ -66,3 +66,4 @@ if st.button('実行'):
         st.write(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
         
     st.write(result["text"])
+"""
