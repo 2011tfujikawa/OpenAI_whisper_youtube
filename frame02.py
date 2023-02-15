@@ -1,5 +1,4 @@
 import streamlit as st
-import datetime
 import whisper
 import youtube_dl
 import os
@@ -11,39 +10,10 @@ print(whisper.__file__)
 outputfile=r'./audio_file.mp3'
 print(os.path.abspath(outputfile))
 
-textfile=r'./tmp.txt'
-print(os.path.abspath(textfile))
-
-ydl_opts = {
-    'format': 'bestaudio/best',
-    'outtmpl':  "audio_file" + '.%(ext)s',
-    'postprocessors': [{
-        'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3',
-        'preferredquality': '192',
-    }],
-}
-
-
-youtube_url = st.text_input("Youtube video or playlist URL")
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
+
 if st.button('実行'):
-
-    source = youtube_url
-    print(source)
-
-#    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-#        data_load_state = st.text('Downloading...'+str(source))
-#        info = ydl.extract_info(source, download=True)
-#        filename = ydl.prepare_filename(info)
-#        #print(info)
-#        print(filename) 
-#        outputfile=filename.replace('webm', 'mp3')
-#        #outputfile=filename.split(".")[0]+str(".mp3")
-#        data_load_state = st.text('Downloag DONE...'+str(source))
-
-    print("----")       
     print(os.path.abspath(outputfile))
     print("----")       
     print(selected_item)
