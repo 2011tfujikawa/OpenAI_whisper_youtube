@@ -32,7 +32,7 @@ ydl_opts = {
 if st.button('実行'):
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         data_load_state = st.text('Downloading...'+str(youtube_url))
-        info = ydl.extract_info(source, download=True)
+        info = ydl.extract_info(youtube_url, download=True)
         filename = ydl.prepare_filename(info)
         #print(info)
         #print(filename) 
