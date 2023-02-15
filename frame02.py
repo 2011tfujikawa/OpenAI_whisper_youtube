@@ -5,11 +5,8 @@ import os
 from IPython.display import HTML
 from base64 import b64encode
 
-video_file = open("https://www.youtube.com/watch?v=svopKK8YoRc", 'rb')
-video_bytes = video_file.read()
-
+st.video('https://www.youtube.com/watch?v=svopKK8YoRc')
 st.video(video_bytes)
-
 
 outputfile=r'./audio_file.mp3'
 print(os.path.abspath(outputfile))
