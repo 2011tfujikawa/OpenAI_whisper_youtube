@@ -1,12 +1,14 @@
 import streamlit as st
 import whisper
-import youtube_dl
 import os
 from IPython.display import HTML
 from base64 import b64encode
 
-st.video('https://www.youtube.com/watch?v=svopKK8YoRc')
+path="./"
+files = os.listdir(path)
+print(files)
 
+st.video('https://www.youtube.com/watch?v=svopKK8YoRc')
 outputfile=r'./audio_file.mp3'
 print(os.path.abspath(outputfile))
 
