@@ -5,18 +5,19 @@ import youtube_dl
 from IPython.display import HTML
 from base64 import b64encode
 
-path="./"
-files = os.listdir(path)
-print(files)
+#path="./"
+#files = os.listdir(path)
+#print(files)
 
 source="https://www.youtube.com/watch?v=svopKK8YoRc"
-
-st.video(source)
 outputfile=r'./audio_file.mp3'
 print(os.path.abspath(outputfile))
 
+youtube_url = st.text_input("Youtube video or playlist URL",source)
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
+
+st.video(source)
 
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -34,7 +35,7 @@ if st.button('実行'):
         info = ydl.extract_info(source, download=True)
         filename = ydl.prepare_filename(info)
         #print(info)
-        print(filename) 
+        #print(filename) 
         outputfile=filename.replace('webm', 'mp3')
         #outputfile=filename.split(".")[0]+str(".mp3")
         data_load_state = st.text('Downloag DONE...'+str(source))
