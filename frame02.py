@@ -37,6 +37,7 @@ if st.button('実行'):
         #print(info)
         #print(filename) 
         outputfile=filename.replace('webm', 'mp3')
+        outputfile=filename.replace('m4a', 'mp3')
         #outputfile=filename.split(".")[0]+str(".mp3")
         data_load_state = st.text('Downloag DONE...'+str(youtube_url))
 
