@@ -9,7 +9,7 @@ st.video('https://www.youtube.com/watch?v=svopKK8YoRc')
 
 outputfile=r'./audio_file.mp3'
 print(os.path.abspath(outputfile))
-print(os.listdir("./"))
+print(os.listdir(outputfile))
 
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
