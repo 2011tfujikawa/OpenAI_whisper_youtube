@@ -17,7 +17,7 @@ youtube_url = st.text_input("Youtube video or playlist URL",source)
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
 
-st.video(source)
+st.video(youtube_url)
 
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -31,14 +31,14 @@ ydl_opts = {
 
 if st.button('実行'):
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        data_load_state = st.text('Downloading...'+str(source))
+        data_load_state = st.text('Downloading...'+str(youtube_url))
         info = ydl.extract_info(source, download=True)
         filename = ydl.prepare_filename(info)
         #print(info)
         #print(filename) 
         outputfile=filename.replace('webm', 'mp3')
         #outputfile=filename.split(".")[0]+str(".mp3")
-        data_load_state = st.text('Downloag DONE...'+str(source))
+        data_load_state = st.text('Downloag DONE...'+str(youtube_url))
 
     print(os.path.abspath(outputfile))
     print("----")       
