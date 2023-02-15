@@ -9,6 +9,7 @@ st.video('https://www.youtube.com/watch?v=svopKK8YoRc')
 
 outputfile=r'./audio_file.mp3'
 print(os.path.abspath(outputfile))
+print(os.listdir(../path))
 
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
@@ -24,9 +25,6 @@ if st.button('実行'):
 
     data_load_state = st.text('Loading data model...'+str(selected_item))
     model = whisper.load_model(selected_item)
-    #model = whisper.load_model("base")
-    #model = whisper.load_model("small")
-    #model = whisper.load_model("medium")
     data_load_state.text('Loading data model...done!'+str(selected_item))
 
     result = model.transcribe(os.path.abspath(outputfile), verbose=True)
