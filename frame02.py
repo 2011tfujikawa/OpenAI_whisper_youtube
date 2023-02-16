@@ -12,8 +12,6 @@ youtube_url = st.text_input("Youtube video or playlist URL",source)
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
 
-st.video(youtube_url)
-
 ydl_opts = {
     'format': 'bestaudio/best',
     'outtmpl':  "audio_file" + '.%(ext)s',
@@ -24,7 +22,8 @@ ydl_opts = {
     }],
 }
 
-if st.button('実行'):
+if st.button('YouTubeからのダウンロード'):
+    st.video(youtube_url)
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         data_load_state = st.text('Downloading...'+str(youtube_url))
         info = ydl.extract_info(youtube_url, download=True)
@@ -38,6 +37,7 @@ if st.button('実行'):
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/ogg')
 
+if st.button('文字書き起こし'):
     data_load_state = st.text('Loading data model...'+str(selected_item))
     model = whisper.load_model(selected_item)
     data_load_state.text('Loading data model...done!'+str(selected_item))
