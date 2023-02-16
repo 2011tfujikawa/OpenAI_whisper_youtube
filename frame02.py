@@ -34,7 +34,7 @@ if st.button('YouTubeからのダウンロード'):
         except FileNotFoundError as FNF:
           outputfile=filename.replace('m4a', 'mp3')
         except Exception as e:
-          print("正しく動画がダウンロードできなかったようです。")
+          st.write("正しく動画がダウンロードできなかったようです。")
         data_load_state = st.text('Downloag DONE...'+str(youtube_url))
 
     audio_file= open(os.path.abspath(outputfile),'rb')
@@ -53,10 +53,9 @@ if st.button('文字書き起こし'):
 # セグメントごとに表示
       for seg in result["segments"]:
           id, start, end, text = [seg[key] for key in ["id", "start", "end", "text"]]
-          print(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
           st.write(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
         
       st.write(result["text"])
 
     except:
-      print("正しく動画がダウンロードされてないようです。")      
+      st.write("正しく動画がダウンロードされてないようです。")      
