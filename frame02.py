@@ -52,7 +52,7 @@ except:
   st.write("YouTubeからダウンロードしてください")
 
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
-     ['base', 'small','medium'])
+     ['base', 'small'])
           
 if st.button('文字書き起こし'):
     try:
