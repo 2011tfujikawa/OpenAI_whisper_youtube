@@ -24,23 +24,27 @@ ydl_opts = {
 
 if st.button('YouTubeからのダウンロード'):
     st.video(youtube_url)
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        data_load_state = st.text('Downloading...'+str(youtube_url))
-        info = ydl.extract_info(youtube_url, download=True)
-        filename = ydl.prepare_filename(info)
+　　try:
+      with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+          data_load_state = st.text('Downloading...'+str(youtube_url))
+          info = ydl.extract_info(youtube_url, download=True)
+          filename = ydl.prepare_filename(info)
 
-        try:
-          outputfile=filename.replace('webm', 'mp3')
-        except FileNotFoundError as FNF:
-          outputfile=filename.replace('m4a', 'mp3')
-        except Exception as e:
-          st.write("正しく動画がダウンロードできなかったようです。")
-        data_load_state = st.text('Downloag DONE...'+str(youtube_url))
+          try:
+            outputfile=filename.replace('webm', 'mp3')
+          except FileNotFoundError as FNF:
+            outputfile=filename.replace('m4a', 'mp3')
+          except Exception as e:
+            st.write("正しく動画がダウンロードできなかったようです。")
+          data_load_state = st.text('Downloag DONE...'+str(youtube_url))
 
-    audio_file= open(os.path.abspath(outputfile),'rb')
-    audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/ogg')
+      audio_file= open(os.path.abspath(outputfile),'rb')
+      audio_bytes = audio_file.read()
+      st.audio(audio_bytes, format='audio/ogg')
 
+     except:
+        st.write("アクセス制限等のために正しく動画がダウンロードできないようです。")      
+     
 if st.button('文字書き起こし'):
     try:
       st.audio(audio_bytes, format='audio/ogg')           
