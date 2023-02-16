@@ -58,5 +58,5 @@ if st.button('文字書き起こし'):
         
       st.write(result["text"])
 
-    except Exception as e:
+    except:
       print("正しく動画がダウンロードされてないようです。")      
