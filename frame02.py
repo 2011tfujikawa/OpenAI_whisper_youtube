@@ -42,18 +42,21 @@ if st.button('YouTubeからのダウンロード'):
     st.audio(audio_bytes, format='audio/ogg')
 
 if st.button('文字書き起こし'):
-    st.audio(audio_bytes, format='audio/ogg') 
-    data_load_state = st.text('Loading data model...'+str(selected_item))
-    model = whisper.load_model(selected_item)
-    data_load_state.text('Loading data model...done!'+str(selected_item))
+    try:
+      st.audio(audio_bytes, format='audio/ogg')           
+      data_load_state = st.text('Loading data model...'+str(selected_item))
+      model = whisper.load_model(selected_item)
+      data_load_state.text('Loading data model...done!'+str(selected_item))
 
-    result = model.transcribe(os.path.abspath(outputfile), verbose=True)
+      result = model.transcribe(os.path.abspath(outputfile), verbose=True)
 
 # セグメントごとに表示
-    for seg in result["segments"]:
-        id, start, end, text = [seg[key] for key in ["id", "start", "end", "text"]]
-        print(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
-        st.write(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
+      for seg in result["segments"]:
+          id, start, end, text = [seg[key] for key in ["id", "start", "end", "text"]]
+          print(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
+          st.write(f"{id:03}: {start:5.1f} - {end:5.1f} | {text}")
         
-    st.write(result["text"])
+      st.write(result["text"])
 
+    except Exception as e:
+      print("正しく動画がダウンロードされてないようです。")      
