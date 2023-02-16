@@ -9,8 +9,6 @@ source="https://www.youtube.com/watch?v=svopKK8YoRc"
 outputfile=r'./audio_file.mp3'
 
 youtube_url = st.text_input("Youtube video or playlist URL",source)
-selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
-     ['base', 'small','medium'])
 
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -22,8 +20,9 @@ ydl_opts = {
     }],
 }
 
+st.video(youtube_url)
+
 if st.button('YouTubeからのダウンロード'):
-    st.video(youtube_url)
     try:
       with youtube_dl.YoutubeDL(ydl_opts) as ydl:
           data_load_state = st.text('Downloading...'+str(youtube_url))
@@ -44,7 +43,11 @@ if st.button('YouTubeからのダウンロード'):
 
     except:
       st.write("アクセス制限等のために正しく動画がダウンロードできないようです。")      
-     
+
+          
+selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
+     ['base', 'small','medium'])
+          
 if st.button('文字書き起こし'):
     try:
       st.audio(audio_bytes, format='audio/ogg')           
