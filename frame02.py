@@ -24,7 +24,7 @@ ydl_opts = {
 
 if st.button('YouTubeからのダウンロード'):
     st.video(youtube_url)
-　　try:
+    try:
       with youtube_dl.YoutubeDL(ydl_opts) as ydl:
           data_load_state = st.text('Downloading...'+str(youtube_url))
           info = ydl.extract_info(youtube_url, download=True)
@@ -42,8 +42,8 @@ if st.button('YouTubeからのダウンロード'):
       audio_bytes = audio_file.read()
       st.audio(audio_bytes, format='audio/ogg')
 
-     except:
-        st.write("アクセス制限等のために正しく動画がダウンロードできないようです。")      
+    except:
+    　st.write("アクセス制限等のために正しく動画がダウンロードできないようです。")      
      
 if st.button('文字書き起こし'):
     try:
