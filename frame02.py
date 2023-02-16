@@ -31,9 +31,9 @@ if st.button('YouTubeからのダウンロード'):
 
         try:
           outputfile=filename.replace('webm', 'mp3')
-        except:
-          outputfile=filename.replace('m4a', 'mp3')
         except FileNotFoundError as FNF:
+          outputfile=filename.replace('m4a', 'mp3')
+        except Exception as e:
           print("正しく動画がダウンロードできなかったようです。")
         data_load_state = st.text('Downloag DONE...'+str(youtube_url))
 
