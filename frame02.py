@@ -43,7 +43,7 @@ if st.button('YouTubeからのダウンロード'):
       st.audio(audio_bytes, format='audio/ogg')
 
     except:
-    　st.write("アクセス制限等のために正しく動画がダウンロードできないようです。")      
+      st.write("アクセス制限等のために正しく動画がダウンロードできないようです。")      
      
 if st.button('文字書き起こし'):
     try:
