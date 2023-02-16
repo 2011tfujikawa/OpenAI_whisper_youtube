@@ -29,8 +29,12 @@ if st.button('YouTubeからのダウンロード'):
         info = ydl.extract_info(youtube_url, download=True)
         filename = ydl.prepare_filename(info)
 
-        outputfile=filename.replace('webm', 'mp3')
-        outputfile=filename.replace('m4a', 'mp3')
+        try:
+          outputfile=filename.replace('webm', 'mp3')
+        except:
+          outputfile=filename.replace('m4a', 'mp3')
+        except FileNotFoundError as FNF:
+          print("正しく動画がダウンロードできなかったようです。")
         data_load_state = st.text('Downloag DONE...'+str(youtube_url))
 
     audio_file= open(os.path.abspath(outputfile),'rb')
