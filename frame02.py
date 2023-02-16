@@ -5,13 +5,8 @@ import youtube_dl
 from IPython.display import HTML
 from base64 import b64encode
 
-#path="./"
-#files = os.listdir(path)
-#print(files)
-
 source="https://www.youtube.com/watch?v=svopKK8YoRc"
 outputfile=r'./audio_file.mp3'
-print(os.path.abspath(outputfile))
 
 youtube_url = st.text_input("Youtube video or playlist URL",source)
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
@@ -34,16 +29,10 @@ if st.button('実行'):
         data_load_state = st.text('Downloading...'+str(youtube_url))
         info = ydl.extract_info(youtube_url, download=True)
         filename = ydl.prepare_filename(info)
-        #print(info)
-        #print(filename) 
+
         outputfile=filename.replace('webm', 'mp3')
         outputfile=filename.replace('m4a', 'mp3')
-        #outputfile=filename.split(".")[0]+str(".mp3")
         data_load_state = st.text('Downloag DONE...'+str(youtube_url))
-
-    print(os.path.abspath(outputfile))
-    print("----")       
-    print(selected_item)
 
     audio_file= open(os.path.abspath(outputfile),'rb')
     audio_bytes = audio_file.read()
@@ -54,7 +43,7 @@ if st.button('実行'):
     data_load_state.text('Loading data model...done!'+str(selected_item))
 
     result = model.transcribe(os.path.abspath(outputfile), verbose=True)
-    print(result["text"])
+
 # セグメントごとに表示
     for seg in result["segments"]:
         id, start, end, text = [seg[key] for key in ["id", "start", "end", "text"]]
