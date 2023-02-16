@@ -44,11 +44,13 @@ if st.button('YouTubeからのダウンロード'):
     except:
       st.write("アクセス制限等のために正しく動画がダウンロードできないようです。")      
 
+try:
+  audio_file= open(os.path.abspath(outputfile),'rb')
+  audio_bytes = audio_file.read()
+  st.audio(audio_bytes, format='audio/ogg')   
+except:
+  st.write("YouTubeからダウンロードしてください")
 
-audio_file= open(os.path.abspath(outputfile),'rb')
-audio_bytes = audio_file.read()
-st.audio(audio_bytes, format='audio/ogg')   
-    
 selected_item = st.selectbox('data model:base(74M),small(244M),medium(769M)',
      ['base', 'small','medium'])
           
