@@ -42,6 +42,7 @@ if st.button('YouTubeからのダウンロード'):
     st.audio(audio_bytes, format='audio/ogg')
 
 if st.button('文字書き起こし'):
+    st.audio(audio_bytes, format='audio/ogg') 
     data_load_state = st.text('Loading data model...'+str(selected_item))
     model = whisper.load_model(selected_item)
     data_load_state.text('Loading data model...done!'+str(selected_item))
