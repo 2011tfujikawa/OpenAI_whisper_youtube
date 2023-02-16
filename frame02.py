@@ -5,10 +5,6 @@ import youtube_dl
 from IPython.display import HTML
 from base64 import b64encode
 
-path="./"
-files = os.listdir(path)
-print(files)
-
 source="https://www.youtube.com/watch?v=svopKK8YoRc"
 outputfile=r'./audio_file.mp3'
 
